@@ -12,9 +12,11 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageContainer;
 import com.android.volley.toolbox.Volley;
 
-// TODO: Auto-generated Javadoc
+import org.dnu.ui.test.R;
+
 /**
  * The Class TestActivity.
+ * @author ISSKJ
  */
 public class TestActivity extends Activity {
 

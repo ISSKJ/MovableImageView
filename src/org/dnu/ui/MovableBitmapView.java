@@ -19,15 +19,6 @@ public class MovableBitmapView extends View {
     /** The Constant TAG. */
     private static final String TAG = "MovableBitmapView";
 
-    /** The Constant DOWN. */
-    public static final int DOWN = 1;
-
-    /** The Constant UP. */
-    public static final int UP = 2;
-
-    /** The Constant IDLE. */
-    public static final int IDLE = 3;
-
     /** The bitmap. */
     private Bitmap mBitmap;
 

@@ -1,9 +1,9 @@
 PACKAGE=org.dnu.ui.test
 all:
-	ant debug
+	ant release
 clean:
 	ant clean
 make run:
 	adb uninstall $(PACKAGE)
-	adb install bin/*-debug.apk
+	adb install bin/*-release.apk
 
