@@ -65,47 +65,6 @@ public class TestActivity extends Activity {
                 iv6.setBitmap(response.getBitmap());
             }
         });
-
-        scrollview.setOnTouchListener(new View.OnTouchListener() {
-            private float oldY;
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        oldY = event.getY();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        iv1.setState(MovableBitmapView.IDLE);
-                        iv2.setState(MovableBitmapView.IDLE);
-                        iv3.setState(MovableBitmapView.IDLE);
-                        iv4.setState(MovableBitmapView.IDLE);
-                        iv5.setState(MovableBitmapView.IDLE);
-                        iv6.setState(MovableBitmapView.IDLE);
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        if (oldY > event.getY()) {
-                            iv1.setState(MovableBitmapView.DOWN);
-                            iv2.setState(MovableBitmapView.DOWN);
-                            iv3.setState(MovableBitmapView.DOWN);
-                            iv4.setState(MovableBitmapView.DOWN);
-                            iv5.setState(MovableBitmapView.DOWN);
-                            iv6.setState(MovableBitmapView.DOWN);
-                        } else {
-                            iv1.setState(MovableBitmapView.UP);
-                            iv2.setState(MovableBitmapView.UP);
-                            iv3.setState(MovableBitmapView.UP);
-                            iv4.setState(MovableBitmapView.UP);
-                            iv5.setState(MovableBitmapView.UP);
-                            iv6.setState(MovableBitmapView.UP);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                return scrollview.onTouchEvent(event);
-            }
-        });
     }
 
 }

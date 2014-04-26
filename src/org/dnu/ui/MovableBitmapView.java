@@ -40,11 +40,14 @@ public class MovableBitmapView extends View {
     /** The paint. */
     private Paint mPaint;
 
-    /** The drawing state. */
-    private int mState;
-
     /** The margin top. */
     private int mMarginTop;
+
+    private int[] mLocation = new int[2];
+
+    private int[] mInitialLocation = new int[2];
+
+    private int mBitmapHeight;
 
 
     /**
@@ -91,6 +94,7 @@ public class MovableBitmapView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
+
     }
 
     /**
@@ -100,9 +104,10 @@ public class MovableBitmapView extends View {
      */
     public void setBitmap(Bitmap bmp) {
         mBitmap = bmp;
+        mBitmapHeight = bmp.getHeight();
         mRectS.right = bmp.getWidth();
-        mRectS.bottom = bmp.getHeight();
-        setMarginTop(100);
+        mRectS.bottom = mBitmapHeight;
+        setMarginTop(150);
     }
 
     /**
@@ -124,16 +129,6 @@ public class MovableBitmapView extends View {
         mRectS.bottom -= top;
     }
 
-    /**
-     * Move up.
-     *
-     * @param state the new state
-     */
-    public void setState(int state) {
-        mState = state;
-    }
-
-
 
     /* (non-Javadoc)
      * @see android.view.View#onDraw(android.graphics.Canvas)
@@ -142,28 +137,25 @@ public class MovableBitmapView extends View {
     protected void onDraw(Canvas c) {
         if (mBitmap == null) return;
 
-        switch (mState) {
-            case DOWN:
-                mRectS.top++;
-                mRectS.bottom++;
-                if (mRectS.bottom >= mBitmap.getHeight()) {
-                    mRectS.top = mMarginTop;
-                    mRectS.bottom = mBitmap.getHeight();
-                }
-                break;
-            case UP:
-                mRectS.top--;
-                mRectS.bottom--;
-                if (mRectS.top <= 0) {
-                    mRectS.top = 0;
-                    mRectS.bottom = mBitmap.getHeight()-mMarginTop;
-                }
-                break;
-            case IDLE:
-                break;
-            default:
-                break;
+        super.getLocationOnScreen(mLocation);
+        double diff = mInitialLocation[1] - mLocation[1];
+
+        int span = (int)(diff / mBitmapHeight * (double)mMarginTop/2.0);
+
+        mRectS.top = span;
+        mRectS.bottom = mBitmapHeight - mMarginTop + span;
+        if (mRectS.bottom >= mBitmapHeight) {
+            mRectS.top = mMarginTop;
+            mRectS.bottom = mBitmapHeight;
         }
+        if (mRectS.top <= 0) {
+            mRectS.top = 0;
+            mRectS.bottom = mBitmapHeight - mMarginTop;
+        }
+
+        //Log.v(TAG, String.format("ID:%d diff:%f span:%d", 
+        //            getId(), diff, span));
+
 
         c.drawBitmap(mBitmap, mRectS, mRectD, mPaint);
     }
@@ -176,5 +168,6 @@ public class MovableBitmapView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mRectD.right = w;
         mRectD.bottom = h;
+        super.getLocationOnScreen(mInitialLocation);
     }
 }
