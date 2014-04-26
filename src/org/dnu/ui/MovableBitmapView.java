@@ -8,11 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * The Class MovableBitmapView.
+ * @author ISSKJ
  */
 public class MovableBitmapView extends View {
 
@@ -43,11 +43,18 @@ public class MovableBitmapView extends View {
     /** The margin top. */
     private int mMarginTop;
 
+    /** The current view location. */
     private int[] mLocation = new int[2];
 
+    /** The initial view location. */
     private int[] mInitialLocation = new int[2];
 
+    /** The bitmap width. */
+    private int mBitmapWidth;
+
+    /** The bitmap height. */
     private int mBitmapHeight;
+
 
 
     /**
@@ -105,7 +112,8 @@ public class MovableBitmapView extends View {
     public void setBitmap(Bitmap bmp) {
         mBitmap = bmp;
         mBitmapHeight = bmp.getHeight();
-        mRectS.right = bmp.getWidth();
+        mBitmapWidth = bmp.getWidth();
+        mRectS.right = mBitmapWidth;
         mRectS.bottom = mBitmapHeight;
         setMarginTop(150);
     }
@@ -153,7 +161,7 @@ public class MovableBitmapView extends View {
             mRectS.bottom = mBitmapHeight - mMarginTop;
         }
 
-        //Log.v(TAG, String.format("ID:%d diff:%f span:%d", 
+        //Log.v(TAG, String.format("ID:%d diff:%f span:%d",
         //            getId(), diff, span));
 
 

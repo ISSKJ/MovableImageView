@@ -5,9 +5,6 @@ import org.dnu.ui.MovableBitmapView;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ScrollView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
@@ -15,10 +12,18 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageContainer;
 import com.android.volley.toolbox.Volley;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestActivity.
+ */
 public class TestActivity extends Activity {
 
+    /** The Constant TAG. */
     private static final String TAG = "TestActivity";
 
+    /* (non-Javadoc)
+     * @see android.app.Activity#onCreate(android.os.Bundle)
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -31,8 +36,6 @@ public class TestActivity extends Activity {
         final MovableBitmapView iv4 = (MovableBitmapView)findViewById(R.id.image_4);
         final MovableBitmapView iv5 = (MovableBitmapView)findViewById(R.id.image_5);
         final MovableBitmapView iv6 = (MovableBitmapView)findViewById(R.id.image_6);
-        final ScrollView scrollview = (ScrollView)findViewById(R.id.scrollview);
-
 
         iv1.setImageResource(R.drawable.sample1);
         iv2.setImageResource(R.drawable.sample2);
