@@ -1,4 +1,4 @@
-PACKAGE=org.dnu.ui.scrollimage
+PACKAGE=org.dnu.ui.test
 all:
 	ant debug
 clean:

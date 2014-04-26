@@ -80,6 +80,8 @@ public class TestActivity extends Activity {
                         iv2.setState(MovableBitmapView.IDLE);
                         iv3.setState(MovableBitmapView.IDLE);
                         iv4.setState(MovableBitmapView.IDLE);
+                        iv5.setState(MovableBitmapView.IDLE);
+                        iv6.setState(MovableBitmapView.IDLE);
                         break;
                     case MotionEvent.ACTION_MOVE:
                         if (oldY > event.getY()) {
@@ -87,11 +89,15 @@ public class TestActivity extends Activity {
                             iv2.setState(MovableBitmapView.DOWN);
                             iv3.setState(MovableBitmapView.DOWN);
                             iv4.setState(MovableBitmapView.DOWN);
+                            iv5.setState(MovableBitmapView.DOWN);
+                            iv6.setState(MovableBitmapView.DOWN);
                         } else {
                             iv1.setState(MovableBitmapView.UP);
                             iv2.setState(MovableBitmapView.UP);
                             iv3.setState(MovableBitmapView.UP);
                             iv4.setState(MovableBitmapView.UP);
+                            iv5.setState(MovableBitmapView.UP);
+                            iv6.setState(MovableBitmapView.UP);
                         }
                         break;
                     default:

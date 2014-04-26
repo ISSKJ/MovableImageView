@@ -89,6 +89,8 @@ public class MovableBitmapView extends View {
         mRectS = new Rect();
         mRectD = new Rect();
         mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
     }
 
     /**
@@ -100,7 +102,7 @@ public class MovableBitmapView extends View {
         mBitmap = bmp;
         mRectS.right = bmp.getWidth();
         mRectS.bottom = bmp.getHeight();
-        setMarginTop(50);
+        setMarginTop(100);
     }
 
     /**
