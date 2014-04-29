@@ -106,7 +106,7 @@ public class MovableBitmapView extends View {
         mBitmapWidth = bmp.getWidth();
         mRectS.right = mBitmapWidth;
         mRectS.bottom = mBitmapHeight;
-        setMarginTop(150);
+        setMarginTop(100);
     }
 
     /**
@@ -125,7 +125,7 @@ public class MovableBitmapView extends View {
      */
     public void setMarginTop(int top) {
         mMarginTop = top;
-        mRectS.bottom -= top;
+        mRectS.bottom = mBitmapHeight - top;
     }
 
 
